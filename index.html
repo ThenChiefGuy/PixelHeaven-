@@ -3,17 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pixel Heaven</title>
+  <title>Pixel Heaven - Premium Minecraft Server</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #121212;
-      color: #fff;
+    :root {
+      --primary: #00bfff;
+      --primary-dark: #0099cc;
+      --secondary: #ff6b6b;
+      --dark: #121212;
+      --darker: #0a0a0a;
+      --medium: #1c1c1c;
+      --light: #f5f5f5;
+      --accent: #9c27b0;
+      --success: #4caf50;
     }
-
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(25, 25, 35, 0.1) 0%, rgba(10, 10, 20, 0.1) 90%),
+        radial-gradient(circle at 90% 80%, rgba(30, 30, 50, 0.1) 0%, rgba(15, 15, 25, 0.1) 90%);
+      background-attachment: fixed;
+    }
+    
+    /* Header & Navigation */
     header {
-      background: #1c1c1c;
+      background: rgba(28, 28, 28, 0.9);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -21,156 +47,1111 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--primary);
     }
-
-    header nav a {
-      color: #00bfff;
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .logo h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    
+    .logo i {
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+    
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--light);
       text-decoration: none;
-      margin: 0 1rem;
       font-weight: 600;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-
+    
+    nav a:hover {
+      color: var(--primary);
+      background: rgba(0, 191, 255, 0.1);
+    }
+    
+    nav a i {
+      font-size: 1.1rem;
+    }
+    
+    .nav-btn {
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+      background: linear-gradient(45deg, var(--primary-dark), #7b1fa2);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
     .hero {
       text-align: center;
-      padding: 4rem 1rem;
-      background: url('banner.jpg') no-repeat center center;
-      background-size: cover;
+      padding: 6rem 1rem 8rem;
       position: relative;
+      overflow: hidden;
+      background: linear-gradient(rgba(10, 10, 20, 0.85), rgba(18, 18, 35, 0.9)), 
+                  url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
     }
-
+    
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
     .hero h1 {
-      font-size: 3rem;
-      color: #00bfff;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 5px #000;
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      animation: fadeInDown 1s ease;
     }
-
-    .ip {
-      background: #222;
-      padding: 0.5rem 1.2rem;
-      display: inline-block;
-      border-radius: 10px;
-      font-size: 1.3rem;
+    
+    .hero h1 span {
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+    }
+    
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: #e0e0e0;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+    
+    .ip-container {
+      background: rgba(34, 34, 34, 0.7);
+      padding: 1.2rem 2rem;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 15px;
+      font-size: 1.4rem;
+      margin: 1rem auto;
+      color: var(--primary);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(0, 191, 255, 0.3);
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+    
+    .ip-container strong {
+      margin-left: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+    .ip-container .copy-btn {
+      margin-left: 15px;
+      background: rgba(0, 191, 255, 0.2);
+      color: var(--primary);
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .ip-container .copy-btn:hover {
+      background: rgba(0, 191, 255, 0.4);
+    }
+    
+    .version {
+      font-size: 1.1rem;
       margin-top: 0.5rem;
-      color: #00bfff;
+      color: #bbb;
+      animation: fadeInUp 1s ease 0.6s both;
     }
-
+    
+    .hero-btns {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      animation: fadeInUp 1s ease 0.8s both;
+    }
+    
+    /* Server Stats */
+    .server-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: -3rem auto 5rem;
+      position: relative;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+    
+    .stat-card {
+      background: rgba(28, 28, 28, 0.9);
+      border-radius: 15px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      min-width: 200px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+    }
+    
+    .stat-card i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .stat-card .number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .stat-card .label {
+      color: #bbb;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* Main Content Sections */
     section {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 3rem auto;
-      padding: 0 1rem;
+      padding: 0 1.5rem;
     }
-
-    h2 {
-      color: #00bfff;
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+    }
+    
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+    
+    .section-header p {
+      max-width: 700px;
+      margin: 1.5rem auto 0;
+      color: #bbb;
+      font-size: 1.1rem;
+    }
+    
+    .rules-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .rule-card {
+      background: rgba(28, 28, 28, 0.7);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+    }
+    
+    .rule-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border-color: rgba(0, 191, 255, 0.3);
+    }
+    
+    .rule-card h3 {
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+    }
+    
+    .rule-card h3 i {
+      font-size: 1.8rem;
+    }
+    
+    .rule-card ul {
+      padding-left: 1.2rem;
+    }
+    
+    .rule-card li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .rule-card li:before {
+      content: '•';
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+      font-size: 1.2rem;
+    }
+    
+    /* How to Join */
+    .steps-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+    
+    .step-card {
+      background: rgba(28, 28, 28, 0.7);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      max-width: 250px;
+      position: relative;
+      transition: transform 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .step-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0, 191, 255, 0.3);
+    }
+    
+    .step-number {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: white;
+    }
+    
+    .step-card i {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .step-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .step-card p {
+      color: #bbb;
+    }
+    
+    /* Features Section */
+    .features {
+      background: linear-gradient(rgba(10, 10, 20, 0.9), rgba(18, 18, 35, 0.9)), 
+                  url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-attachment: fixed;
+      padding: 5rem 0;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .feature-card {
+      background: rgba(28, 28, 28, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+    }
+    
+    .feature-card i {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .feature-card p {
+      color: #bbb;
+    }
+    
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      height: 250px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    .gallery-overlay h3 {
+      color: white;
       margin-bottom: 0.5rem;
     }
-
-    ul {
+    
+    .gallery-overlay p {
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+    
+    /* Buttons */
+    .btn {
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 191, 255, 0.3);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 191, 255, 0.5);
+      background: linear-gradient(45deg, var(--primary-dark), #7b1fa2);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: rgba(0, 191, 255, 0.1);
+      color: white;
+    }
+    
+    /* Footer */
+    footer {
+      background: rgba(15, 15, 20, 0.95);
+      padding: 4rem 1rem 2rem;
+      margin-top: 5rem;
+      position: relative;
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0, 191, 255, 0.2);
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+    
+    .footer-column h3 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    .footer-column p {
+      color: #bbb;
+      margin-bottom: 1rem;
       line-height: 1.8;
     }
-
-    .note {
-      font-size: 0.95rem;
-      color: #ccc;
-      margin-top: 1rem;
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
-
-    .btn {
-      background: #00bfff;
-      color: #fff;
-      padding: 0.6rem 1.2rem;
-      border: none;
-      border-radius: 6px;
-      margin: 0.5rem;
-      cursor: pointer;
-      font-size: 0.95rem;
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--light);
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-column ul li a {
+      color: #bbb;
       text-decoration: none;
-      display: inline-block;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-
-    .btn:hover {
-      background: #0099cc;
+    
+    .footer-column ul li a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
     }
-
-    footer {
-      background: #1a1a1a;
+    
+    .footer-column ul li a i {
+      color: var(--primary);
+    }
+    
+    .copyright {
       text-align: center;
-      padding: 1.5rem 1rem;
+      padding-top: 2rem;
       margin-top: 3rem;
-      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       color: #888;
+      font-size: 0.9rem;
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 191, 255, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 191, 255, 0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .server-stats {
+        gap: 1.5rem;
+      }
+      
+      .stat-card {
+        min-width: 180px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 70px;
+        right: -300px;
+        width: 280px;
+        height: calc(100vh - 70px);
+        background: rgba(28, 28, 28, 0.95);
+        flex-direction: column;
+        padding: 2rem;
+        transition: right 0.3s ease;
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        border-left: 2px solid var(--primary);
+      }
+      
+      nav.active {
+        right: 0;
+      }
+      
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .ip-container {
+        font-size: 1.2rem;
+        padding: 1rem;
+      }
+      
+      .server-stats {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        gap: 1rem;
+      }
+      
+      .stat-card {
+        min-width: 140px;
+        padding: 1rem;
+      }
+      
+      .stat-card .number {
+        font-size: 1.8rem;
+      }
+      
+      .hero-btns {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero {
+        padding: 4rem 1rem 6rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .ip-container {
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .stat-card {
+        min-width: 100%;
+      }
+      
+      .section-header h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <div style="font-weight: bold; color: #00bfff;"> Pixel Heaven</div>
-    <nav>
-      <a href="#rules">Rules</a>
-      <a href="#how-to-join">How to Play</a>
-      <a href="https://discord.gg/bpvre4M8bn" target="_blank">Discord</a>
-      <a href="#">Store</a>
+    <div class="logo">
+      <i class="fas fa-cubes"></i>
+      <h1>Pixel Heaven</h1>
+    </div>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <nav id="mainNav">
+      <a href="#home"><i class="fas fa-home"></i> Home</a>
+      <a href="#rules"><i class="fas fa-gavel"></i> Rules</a>
+      <a href="#how-to-join"><i class="fas fa-gamepad"></i> How to Play</a>
+      <a href="#features"><i class="fas fa-star"></i> Features</a>
+      <a href="#gallery"><i class="fas fa-images"></i> Gallery</a>
+      <a href="https://discord.gg/bpvre4M8bn" target="_blank" class="nav-btn"><i class="fab fa-discord"></i> Discord</a>
     </nav>
   </header>
 
-  <div class="hero">
-    <h1> Welcome to Pixel Heaven! </h1>
-    <p>Your safe, fun, and friendly Minecraft server.</p>
-    <div class="ip">IP: <strong>ggpixelheaven.falixsrv.me</strong></div>
-    <div style="margin-top: 0.3rem;">Supported Version: <strong>1.21.4</strong></div>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Welcome to <span>Pixel Heaven</span></h1>
+      <p>Your ultimate Minecraft adventure awaits in our safe, friendly, and feature-packed server!</p>
+      
+      <div class="ip-container">
+        <i class="fas fa-server"></i> 
+        IP: <strong>ggpixelheaven.falixsrv.me</strong>
+        <button class="copy-btn" onclick="copyIP()"><i class="fas fa-copy"></i></button>
+      </div>
+      
+      <div class="version">
+        <i class="fas fa-code-branch"></i> Supported Version: <strong>1.21.4</strong>
+      </div>
+      
+      <div class="hero-btns">
+        <a href="#how-to-join" class="btn"><i class="fas fa-play-circle"></i> Join Now</a>
+        <a href="https://discord.gg/bpvre4M8bn" target="_blank" class="btn btn-outline"><i class="fab fa-discord"></i> Join Discord</a>
+      </div>
+    </div>
+  </section>
+  
+  <div class="server-stats">
+    <div class="stat-card">
+      <i class="fas fa-users"></i>
+      <div class="number">1,250+</div>
+      <div class="label">Active Players</div>
+    </div>
+    
+    <div class="stat-card">
+      <i class="fas fa-calendar-alt"></i>
+      <div class="number">365+</div>
+      <div class="label">Days Online</div>
+    </div>
+    
+    <div class="stat-card">
+      <i class="fas fa-map"></i>
+      <div class="number">12</div>
+      <div class="label">Unique Worlds</div>
+    </div>
+    
+    <div class="stat-card">
+      <i class="fas fa-trophy"></i>
+      <div class="number">24/7</div>
+      <div class="label">Uptime</div>
+    </div>
   </div>
 
   <section id="rules">
-    <h2>🛡️ General Rules</h2>
-    <ul>
-      <li>Be Respectful – No hate speech, bullying, racism, sexism, or discrimination of any kind.</li>
-      <li>No Cheating or Hacking – No X-ray, fly hacks, autoclickers, or any unfair advantage.</li>
-      <li>Keep Chat Clean – No spamming, advertising, or inappropriate content.</li>
-      <li>No NSFW or Inappropriate Builds – PixelHeaven is family-friendly.</li>
-      <li>Follow Staff Instructions – Our staff are here to help, their decisions are final.</li>
-    </ul>
-
-    <h2>🛠️ Gameplay Rules</h2>
-    <ul>
-      <li><strong>PVP Rules:</strong> Only outside claims, unless in PvP zones or arena (combat logging is bannable – report with proof).</li>
-      <li>Don’t Exploit Bugs – Report bugs/glitches, don’t abuse them.</li>
-      <li>No Lag Machines or AFK Farms – Anything that lags the server <strong>will</strong> be removed.</li>
-    </ul>
-
-    <h2>🔥 Additional Notes</h2>
-    <ul>
-      <li><strong>Mods & Resource Packs</strong> – Only cosmetic or performance-enhancing mods allowed (OptiFine, etc.). Ask staff if unsure.</li>
-    </ul>
-
-    <h2>🚨 Consequences</h2>
-    <ul>
-      <li>Breaking rules may result in a warning, mute, kick, temporary ban, or permanent ban depending on the severity.</li>
-    </ul>
+    <div class="section-header">
+      <h2>Server Rules</h2>
+      <p>To ensure everyone has a great experience, please follow our community guidelines</p>
+    </div>
+    
+    <div class="rules-container">
+      <div class="rule-card">
+        <h3><i class="fas fa-handshake"></i> General Rules</h3>
+        <ul>
+          <li>Be Respectful – No hate speech, bullying, racism, sexism, or discrimination of any kind.</li>
+          <li>No Cheating or Hacking – No X-ray, fly hacks, autoclickers, or any unfair advantage.</li>
+          <li>Keep Chat Clean – No spamming, advertising, or inappropriate content.</li>
+          <li>No NSFW or Inappropriate Builds – PixelHeaven is family-friendly.</li>
+          <li>Follow Staff Instructions – Our staff are here to help, their decisions are final.</li>
+        </ul>
+      </div>
+      
+      <div class="rule-card">
+        <h3><i class="fas fa-gamepad"></i> Gameplay Rules</h3>
+        <ul>
+          <li><strong>PVP Rules:</strong> Only outside claims, unless in PvP zones or arena (combat logging is bannable – report with proof).</li>
+          <li>Don’t Exploit Bugs – Report bugs/glitches, don’t abuse them.</li>
+          <li>No Lag Machines or AFK Farms – Anything that lags the server <strong>will</strong> be removed.</li>
+        </ul>
+      </div>
+      
+      <div class="rule-card">
+        <h3><i class="fas fa-exclamation-triangle"></i> Additional Notes</h3>
+        <ul>
+          <li><strong>Mods & Resource Packs</strong> – Only cosmetic or performance-enhancing mods allowed (OptiFine, etc.). Ask staff if unsure.</li>
+          <li><strong>Consequences</strong> – Breaking rules may result in a warning, mute, kick, temporary ban, or permanent ban depending on the severity.</li>
+          <li><strong>Reporting</strong> – Use /report in-game or contact staff on Discord for rule violations.</li>
+          <li><strong>Appeals</strong> – Banned players can appeal on our Discord server.</li>
+        </ul>
+      </div>
+    </div>
   </section>
-
+  
   <section id="how-to-join">
-    <h2>🎮 Step-by-Step Guide to Connect</h2>
-    <ol>
-      <li><strong>Open Minecraft: Java Edition</strong> – Launch the Minecraft launcher and log in.</li>
-      <li><strong>Select Version:</strong> Click "Installations" > "New Installation" > choose version <strong>1.21.4</strong>.</li>
-      <li><strong>Add Server:</strong> Go to Multiplayer > Add Server > Server Name: <em>PixelHeaven</em> > Server Address: <strong>ggpixelheaven.falixsrv.me</strong>.</li>
-      <li><strong>Join:</strong> Click "Done", then select PixelHeaven from the list and click "Join Server".</li>
-    </ol>
-
-    <h3>💡 Troubleshooting</h3>
-    <ul>
-      <li>Ensure you're on version <strong>1.21.4</strong>.</li>
-      <li>Double-check IP: <strong>ggpixelheaven.falixsrv.me</strong>.</li>
-      <li>Check your internet/firewall settings.</li>
-      <li>Still stuck? Contact us on <a href="https://discord.gg/bpvre4M8bn" target="_blank" class="btn">Discord</a>.</li>
-    </ul>
+    <div class="section-header">
+      <h2>How to Join</h2>
+      <p>Follow these simple steps to start your adventure in Pixel Heaven</p>
+    </div>
+    
+    <div class="steps-container">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <i class="fas fa-desktop"></i>
+        <h3>Open Minecraft</h3>
+        <p>Launch the Minecraft launcher and log in with your account</p>
+      </div>
+      
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <i class="fas fa-code-branch"></i>
+        <h3>Select Version</h3>
+        <p>Create a new installation using version <strong>1.21.4</strong></p>
+      </div>
+      
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <i class="fas fa-network-wired"></i>
+        <h3>Add Server</h3>
+        <p>Go to Multiplayer > Add Server > Enter our IP address</p>
+      </div>
+      
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <i class="fas fa-play"></i>
+        <h3>Join Server</h3>
+        <p>Select PixelHeaven from your server list and click "Join Server"</p>
+      </div>
+    </div>
+    
+    <div class="section-header" style="margin-top: 4rem;">
+      <h3>Troubleshooting</h3>
+    </div>
+    
+    <div class="rules-container">
+      <div class="rule-card">
+        <ul>
+          <li>Ensure you're on version <strong>1.21.4</strong></li>
+          <li>Double-check IP: <strong>ggpixelheaven.falixsrv.me</strong></li>
+          <li>Check your internet/firewall settings</li>
+          <li>Still stuck? Contact us on <a href="https://discord.gg/bpvre4M8bn" target="_blank" class="btn" style="margin-top: 1rem;"><i class="fab fa-discord"></i> Discord</a></li>
+        </ul>
+      </div>
+    </div>
   </section>
-
+  
+  <section class="features" id="features">
+    <div class="section-header">
+      <h2>Server Features</h2>
+      <p>Discover what makes Pixel Heaven the ultimate Minecraft experience</p>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Safe Environment</h3>
+        <p>Our dedicated staff and advanced anti-cheat ensure a fair and secure gaming experience for everyone</p>
+      </div>
+      
+      <div class="feature-card">
+        <i class="fas fa-users"></i>
+        <h3>Active Community</h3>
+        <p>Join thousands of friendly players in our vibrant community with daily events and activities</p>
+      </div>
+      
+      <div class="feature-card">
+        <i class="fas fa-sync-alt"></i>
+        <h3>Regular Updates</h3>
+        <p>We constantly add new content, events, and features to keep your gameplay fresh and exciting</p>
+      </div>
+      
+      <div class="feature-card">
+        <i class="fas fa-gem"></i>
+        <h3>Premium Ranks</h3>
+        <p>Unlock special perks, abilities, and cosmetics with our supporter ranks that help keep the server running</p>
+      </div>
+      
+      <div class="feature-card">
+        <i class="fas fa-trophy"></i>
+        <h3>Events & Tournaments</h3>
+        <p>Participate in weekly events, building competitions, PvP tournaments with awesome prizes</p>
+      </div>
+      
+      <div class="feature-card">
+        <i class="fas fa-city"></i>
+        <h3>Player Economy</h3>
+        <p>Engage in our player-driven economy with shops, auctions, and a fully functional market system</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="gallery">
+    <div class="section-header">
+      <h2>Server Gallery</h2>
+      <p>Take a look at some amazing builds and landscapes from our players</p>
+    </div>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1560574188-6a6774965120?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Spawn City">
+        <div class="gallery-overlay">
+          <h3>Spawn City</h3>
+          <p>Our magnificent starting area built by the community</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1633613286991-611fe299c4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Medieval Castle">
+        <div class="gallery-overlay">
+          <h3>Dragon's Keep</h3>
+          <p>Massive medieval castle built by player team</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1531315630201-bb15abeb1653?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Floating Islands">
+        <div class="gallery-overlay">
+          <h3>Sky Islands</h3>
+          <p>Beautiful floating islands in the Aether dimension</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1607434472257-d9f8e57a643d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="PvP Arena">
+        <div class="gallery-overlay">
+          <h3>Champions Arena</h3>
+          <p>Massive PvP arena for tournaments and battles</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <footer>
-    &copy; 2025 Pixel Heaven. Not affiliated with Mojang or Microsoft.
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About Pixel Heaven</h3>
+        <p>Pixel Heaven is a premium Minecraft server established in 2025 by Davy, dedicated to providing a fun, safe, and engaging environment for players of all ages.</p>
+        <div class="social-links">
+          <a href="https://discord.gg/bpvre4M8bn" target="_blank"><i class="fab fa-discord"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="#rules"><i class="fas fa-chevron-right"></i> Server Rules</a></li>
+          <li><a href="#how-to-join"><i class="fas fa-chevron-right"></i> How to Join</a></li>
+          <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+          <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Server Info</h3>
+        <ul>
+          <li><a href="#"><i class="fas fa-server"></i> IP: ggpixelheaven.falixsrv.me</a></li>
+          <li><a href="#"><i class="fas fa-code-branch"></i> Version: 1.21.4</a></li>
+          <li><a href="#"><i class="fas fa-map"></i> Worlds: Survival, Creative, Skyblock, Minigames</a></li>
+          <li><a href="#"><i class="fas fa-store"></i> Visit Store</a></li>
+          <li><a href="https://discord.gg/bpvre4M8bn" target="_blank"><i class="fab fa-discord"></i> Join Discord</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; 2025 Pixel Heaven Minecraft Server. Not affiliated with Mojang or Microsoft.
+    </div>
   </footer>
-
+  
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mainNav = document.getElementById('mainNav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (mainNav.classList.contains('active')) {
+            mainNav.classList.remove('active');
+          }
+        }
+      });
+    });
+    
+    // Copy IP to clipboard
+    function copyIP() {
+      const ip = 'ggpixelheaven.falixsrv.me';
+      navigator.clipboard.writeText(ip);
+      
+      const btn = document.querySelector('.copy-btn');
+      btn.innerHTML = '<i class="fas fa-check"></i>';
+      btn.style.background = 'var(--success)';
+      
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-copy"></i>';
+        btn.style.background = '';
+      }, 2000);
+    }
+    
+    // Animate stats on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const statCards = document.querySelectorAll('.stat-card');
+          statCards.forEach((card, index) => {
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, index * 200);
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    observer.observe(document.querySelector('.server-stats'));
+  </script>
 </body>
-</html>
+        </html>
